@@ -3,9 +3,10 @@
 A minimalist starting point for your next Vue hook.
 
 - 🧩 TypeScript by default
-- 🏋️‍♀️ Vue as peer dependency
+- 🏋️‍♀️ Vue as peer dependency (minimal bundle size)
+- 🤟 Vue 2 & 3 support using [vue-demi](https://github.com/antfu/vue-demi)
+- 🤹 Testing using [Jest](https://jestjs.io)
 - 🏎 Edit variables, implement, test, publish
-- 🤟 Vue 2 & 3 support offered by [vue-demi](https://github.com/antfu/vue-demi)
 
 ## Commands
 
@@ -45,4 +46,5 @@ yarn test:types
 - [ ] Edit README.md
 - [ ] Implement my hook
 - [ ] Test my hook
-- [ ] Publish on NPM
+- [ ] Document
+- [ ] Publish on [NPM](npmjs.com), [awesome-vue](https://github.com/vuejs/awesome-vue), [vue-forum](https://forum.vuejs.org/), [Vue Discord](https://fr.vuejs.org/v2/guide/join.html).
