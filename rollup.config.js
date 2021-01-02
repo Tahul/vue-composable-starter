@@ -1,3 +1,4 @@
+// @ts-nocheck - Disable TypeScript checks here
 import path from 'path'
 import ts from 'rollup-plugin-typescript2'
 import replace from '@rollup/plugin-replace'
@@ -8,7 +9,7 @@ import pascalcase from 'pascalcase'
 const pkg = require('./package.json')
 const name = pkg.name
 
-function getAuthors(pkg) {
+const getAuthors = (pkg) => {
   const { contributors, author } = pkg
 
   const authors = new Set()
@@ -31,32 +32,25 @@ const banner = `/*!
 let hasTSChecked = false
 
 const outputConfigs = {
-  // each file name has the format: `dist/${name}.${format}.js`
-  // format being a key of this object
   'esm-bundler': {
-    dir: 'dist/',
+    file: pkg.module,
+    format: `es`,
+  },
+  cjs: {
+    file: pkg.main,
+    format: `cjs`,
+  },
+  global: {
+    file: pkg.unpkg,
+    format: `iife`,
+  },
+  esm: {
+    file: pkg.module.replace('-bundler.js', '-browser.js'),
     format: `es`,
   },
 }
 
-const allFormats = Object.keys(outputConfigs)
-const packageFormats = allFormats
-const packageConfigs = packageFormats.map((format) =>
-  createConfig(format, outputConfigs[format]),
-)
-
-// only add the production ready if we are bundling the options
-packageFormats.forEach((format) => {
-  if (format === 'cjs') {
-    packageConfigs.push(createProductionConfig(format))
-  } else if (format === 'global') {
-    packageConfigs.push(createMinifiedConfig(format))
-  }
-})
-
-export default packageConfigs
-
-function createConfig(format, output, plugins = []) {
+const createConfig = (format, output, plugins = []) => {
   if (!output) {
     console.log(require('chalk').yellow(`invalid format: "${format}"`))
     process.exit(1)
@@ -66,6 +60,7 @@ function createConfig(format, output, plugins = []) {
   output.banner = banner
   output.externalLiveBindings = false
   output.globals = { vue: 'Vue' }
+  output.exports = 'auto'
 
   const isProductionBuild = /\.prod\.js$/.test(output.file)
   const isGlobalBuild = format === 'global'
@@ -87,9 +82,10 @@ function createConfig(format, output, plugins = []) {
         declaration: shouldEmitDeclarations,
         declarationMap: shouldEmitDeclarations,
       },
-      exclude: ['__tests__', 'test-dts'],
+      exclude: ['tests'],
     },
   })
+
   // we only need to check TS and generate declarations once for each build.
   // it also seems to run into weird issues when checking multiple times
   // during a single build.
@@ -109,7 +105,6 @@ function createConfig(format, output, plugins = []) {
       createReplacePlugin(
         isProductionBuild,
         isBundlerESMBuild,
-        // isBrowserBuild?
         isGlobalBuild || isRawESMBuild || isBundlerESMBuild,
         isGlobalBuild,
         isNodeBuild,
@@ -118,21 +113,16 @@ function createConfig(format, output, plugins = []) {
       ...plugins,
     ],
     output,
-    // onwarn: (msg, warn) => {
-    //   if (!/Circular/.test(msg)) {
-    //     warn(msg)
-    //   }
-    // },
   }
 }
 
-function createReplacePlugin(
+const createReplacePlugin = (
   isProduction,
   isBundlerESMBuild,
   isBrowserBuild,
   isGlobalBuild,
   isNodeBuild,
-) {
+) => {
   const replacements = {
     __COMMIT__: `"${process.env.COMMIT}"`,
     __VERSION__: `"${pkg.version}"`,
@@ -163,20 +153,13 @@ function createReplacePlugin(
   return replace(replacements)
 }
 
-function createProductionConfig(format) {
-  return createConfig(format, {
-    file: `dist/${name}.${format}.prod.js`,
-    format: outputConfigs[format].format,
-  })
-}
-
-function createMinifiedConfig(format) {
+const createMinifiedConfig = (format) => {
   const { terser } = require('rollup-plugin-terser')
 
   return createConfig(
     format,
     {
-      file: `dist/${name}.${format}.prod.js`,
+      file: `dist/index.${format}.prod.js`,
       format: outputConfigs[format].format,
     },
     [
@@ -190,3 +173,18 @@ function createMinifiedConfig(format) {
     ],
   )
 }
+
+const allFormats = Object.keys(outputConfigs)
+const packageFormats = allFormats
+const packageConfigs = packageFormats.map((format) =>
+  createConfig(format, outputConfigs[format]),
+)
+
+// only add the production ready if we are bundling the options
+packageFormats.forEach((format) => {
+  if (format === 'global') {
+    packageConfigs.push(createMinifiedConfig(format))
+  }
+})
+
+export default packageConfigs
