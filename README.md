@@ -1,10 +1,11 @@
 # 🪝 vue-hook-starter
 
-A minimalist starting point for your next Vue 3 hook.
+A minimalist starting point for your next Vue hook.
 
 - ✅ TypeScript by default
 - ⚙️ Vue as peer dependency
 - 🏎 Edit variables, implement, test, publish
+- 🤟 Vue 2 & 3 support offered by [vue-demi](https://github.com/antfu/vue-demi)
 
 ## Commands
 
