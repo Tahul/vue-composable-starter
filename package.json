@@ -1,0 +1,40 @@
+{
+  "name": "vue-hook-starter",
+  "version": "1.0.0",
+  "description": "🪝🪝 The next big hook",
+  "repository": "https://github.com/Tahul/vue-hook-starter",
+  "author": "Yaël GUILLOUX <yael.guilloux@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "hook"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -w -c rollup.config.js",
+    "lint": "prettier -c --parser typescript \"{src,__tests__,e2e}/**/*.[jt]s?(x)\"",
+    "lint:fix": "yarn run lint --write",
+    "test:types": "tsc --build tsconfig.json",
+    "test": "yarn run test:types && yarn run test:unit && yarn run build && yarn run build:dts"
+  },
+  "files": [
+    "dist/*",
+    "dist/src/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  }
+}
