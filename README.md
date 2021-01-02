@@ -41,8 +41,8 @@ yarn test:types
 
 ## To-Do
 
-- [] Edit package.json `name`, `description`, `repository` and `author` keys.
-- [] Edit README.md
-- [] Implement my hook
-- [] Test my hook
-- [] Publish on NPM
+- [-] Edit package.json `name`, `description`, `repository` and `author` keys.
+- [-] Edit README.md
+- [-] Implement my hook
+- [-] Test my hook
+- [-] Publish on NPM
