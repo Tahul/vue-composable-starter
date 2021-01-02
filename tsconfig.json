@@ -1,6 +1,6 @@
 {
   "include": ["src/global.d.ts", "src/**/*.ts", "tests/**/*.ts"],
-  "exclude": ["dist", "node_modules"],
+  "exclude": ["dist", "node_modules", "vue-demi"],
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
@@ -11,7 +11,8 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "allowJs": true,
+    "allowJs": false,
+    "skipLibCheck": true,
 
     "noUnusedLocals": true,
     "strictNullChecks": true,
