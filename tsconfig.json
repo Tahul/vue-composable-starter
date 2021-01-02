@@ -11,7 +11,7 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "allowJs": false,
+    "allowJs": true,
 
     "noUnusedLocals": true,
     "strictNullChecks": true,
