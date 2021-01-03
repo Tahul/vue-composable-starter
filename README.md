@@ -1,6 +1,6 @@
-# 🪝 vue-hook-starter
+# 🪝 vue-composable-starter
 
-A minimalist starting point for your next Vue hook.
+A minimalist starting point for your next Vue composable.
 
 - 🧩 TypeScript by default
 - 🏋️‍♀️ Vue as peer dependency (minimal bundle size)
@@ -44,8 +44,8 @@ yarn test:types
 
 - [ ] Edit package.json `name`, `description`, `repository` and `author` keys.
 - [ ] Edit README.md
-- [ ] Implement my hook
-- [ ] Test my hook
+- [ ] Implement my composable
+- [ ] Test my composable
 - [ ] Document
 - [ ] Publish on [NPM](npmjs.com), [awesome-vue](https://github.com/vuejs/awesome-vue), [vue-forum](https://forum.vuejs.org/), [Vue Discord](https://fr.vuejs.org/v2/guide/join.html).
 

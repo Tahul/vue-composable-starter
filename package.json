@@ -1,12 +1,12 @@
 {
-  "name": "vue-hook-starter",
+  "name": "vue-composable-starter",
   "version": "1.0.0",
   "description": "🪝🪝 The next big hook",
-  "repository": "https://github.com/Tahul/vue-hook-starter",
+  "repository": "https://github.com/Tahul/vue-composable-starter",
   "bugs": {
-    "url": "https://github.com/Tahul/vue-use-sound/issues"
+    "url": "https://github.com/Tahul/vue-composable-starter/issues"
   },
-  "homepage": "https://github.com/Tahul/vue-use-sound#readme",
+  "homepage": "https://github.com/Tahul/vue-composable-starter#readme",
   "author": "Yaël GUILLOUX <yael.guilloux@gmail.com>",
   "license": "MIT",
   "keywords": [
