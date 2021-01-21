@@ -6,6 +6,8 @@ A minimalist starting point for your next Vue composable.
 - 🏋️‍♀️ Vue as peer dependency (minimal bundle size)
 - 🤟 Vue 2 & 3 support using [vue-demi](https://github.com/antfu/vue-demi)
 - 🤹 Testing using [Jest](https://jestjs.io)
+- 🚚 Exports **cjs**, **esm** and **global** bundles
+- 📸 Demo ready to be written and bundled using [Vite](https://vitejs.dev/)
 - 🏎 Edit variables, implement, test, publish
 
 ## Commands
