@@ -40,6 +40,9 @@
       {
         "name": "@vuedx/typescript-plugin-vue"
       }
-    ]
+    ],
+    "paths": {
+      "@lib": ["./src"]
+    }
   }
 }
