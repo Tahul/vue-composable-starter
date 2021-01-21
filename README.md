@@ -21,7 +21,19 @@ yarn build
 Build with watcher:
 
 ```bash
-yarn watch
+yarn dev
+```
+
+Run the demo:
+
+```bash
+yarn dev:demo
+```
+
+Build the demo:
+
+```bash
+yarn build:demo
 ```
 
 Lint the package:
