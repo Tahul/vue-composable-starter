@@ -45,6 +45,7 @@ yarn test:types
 ## To-Do
 
 - [ ] Edit package.json `name`, `description`, `repository` and `author` keys.
+- [ ] Remove .vscode folder (containing recommended extensions)
 - [ ] Edit README.md.
 - [ ] Implement my composable.
 - [ ] Test my composable.
