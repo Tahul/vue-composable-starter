@@ -1,4 +1,4 @@
-import useToggle from '../src'
+import { useToggle } from '../src'
 
 describe('useToggle', () => {
   const [toggleable, toggle] = useToggle(true)
