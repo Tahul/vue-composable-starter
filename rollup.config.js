@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
 import pascalcase from 'pascalcase'
 import path from 'path'
+import dts from 'rollup-plugin-dts'
 import ts from 'rollup-plugin-typescript2'
 
 const pkg = require('./package.json')
