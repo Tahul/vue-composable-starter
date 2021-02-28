@@ -44,6 +44,10 @@ const outputConfigs = {
     file: pkg.unpkg,
     format: `iife`,
   },
+  dts: {
+    file: pkg.types,
+    format: `es`,
+  },
   esm: {
     file: pkg.module.replace('-bundler.js', '-browser.js'),
     format: `es`,
@@ -56,11 +60,21 @@ const createConfig = (format, output, plugins = []) => {
     process.exit(1)
   }
 
+  const external = ['vue-demi']
+
   output.sourcemap = !!process.env.SOURCE_MAP
   output.banner = banner
   output.externalLiveBindings = false
-  output.globals = { vue: 'Vue' }
+  output.globals = { vue: 'Vue', 'vue-demi': 'VueDemi' }
   output.exports = 'auto'
+
+  if (format === 'dts') {
+    return {
+      input: `src/index.ts`,
+      plugins: [dts()],
+      output,
+    }
+  }
 
   const isProductionBuild = /\.prod\.js$/.test(output.file)
   const isGlobalBuild = format === 'global'
@@ -70,8 +84,6 @@ const createConfig = (format, output, plugins = []) => {
 
   if (isGlobalBuild) output.name = pascalcase(pkg.name)
 
-  const shouldEmitDeclarations = !hasTSChecked
-
   const tsPlugin = ts({
     check: !hasTSChecked,
     tsconfig: path.resolve(__dirname, 'tsconfig.json'),
@@ -79,8 +91,8 @@ const createConfig = (format, output, plugins = []) => {
     tsconfigOverride: {
       compilerOptions: {
         sourceMap: output.sourcemap,
-        declaration: shouldEmitDeclarations,
-        declarationMap: shouldEmitDeclarations,
+        declaration: false,
+        declarationMap: false,
       },
       exclude: ['tests', 'demo'],
     },
@@ -90,8 +102,6 @@ const createConfig = (format, output, plugins = []) => {
   // it also seems to run into weird issues when checking multiple times
   // during a single build.
   hasTSChecked = true
-
-  const external = ['vue']
 
   const nodePlugins = [resolve(), commonjs()]
 
@@ -124,6 +134,7 @@ const createReplacePlugin = (
   isNodeBuild,
 ) => {
   const replacements = {
+    preventAssignment: true,
     __COMMIT__: `"${process.env.COMMIT}"`,
     __VERSION__: `"${pkg.version}"`,
     __DEV__: isBundlerESMBuild
