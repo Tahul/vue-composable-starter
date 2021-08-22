@@ -1,7 +1,7 @@
 {
   "name": "vue-composable-starter",
   "version": "1.0.0",
-  "description": "🪝🪝 The next big hook",
+  "description": "🪝 Minimalist starting point for your next Vue Composable",
   "repository": "https://github.com/Tahul/vue-composable-starter",
   "bugs": {
     "url": "https://github.com/Tahul/vue-composable-starter/issues"
