@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest'
 import { useToggle } from '../src'
 
 describe('useToggle', () => {
