@@ -1,13 +1,12 @@
 # 🪝 vue-composable-starter
 
-A minimalist starting point for your next Vue composable.
+A minimalist starting point for your next Vue 3 composable.
 
 - 🧩 TypeScript by default
-- 🏋️‍♀️ Vue as peer dependency (minimal bundle size)
-- 🤟 Vue 2 & 3 support using [vue-demi](https://github.com/antfu/vue-demi)
-- 🤹 Testing using [Jest](https://jestjs.io)
-- 🚚 Exports **cjs**, **esm** and **global** bundles
-- 📸 Demo ready to be written and bundled using [Vite](https://vitejs.dev/)
+- 📦 PNPM as package manager
+- 🤹 Testing using [**Vitest**](https://vitest.dev)
+- 🚚 Exports **ESM** and **CJS** bundles
+- 📸 Demo ready to be written and deployed using [**Vite**](https://vitejs.dev)
 - 🏎 Edit variables, implement, test, publish
 
 ## Commands
@@ -15,43 +14,43 @@ A minimalist starting point for your next Vue composable.
 Build the package:
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Build with watcher:
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Run the demo:
 
 ```bash
-yarn dev:demo
+pnpm dev:demo
 ```
 
 Build the demo:
 
 ```bash
-yarn build:demo
+pnpm build:demo
 ```
 
 Lint the package:
 
 ```bash
-yarn link
+pnpm link
 ```
 
 Run test suite:
 
 ```bash
-yarn test
+pnpm test
 ```
 
 Test typings:
 
 ```bash
-yarn test:types
+pnpm test:types
 ```
 
 ## To-Do
