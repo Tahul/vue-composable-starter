@@ -1,17 +1,13 @@
 <template>
   <div>
-    <input
-      type="checkbox"
-      :value="toggleable ? 'checked' : 'unchecked'"
-      @change="toggle"
-    />
+    <input type="checkbox" :value="toggleable ? 'checked' : 'unchecked'" @change="toggle" />
     Current value is: {{ toggleable }}
   </div>
 </template>
 
 <script lang="ts">
-import { useToggle } from '@lib'
 import { defineComponent } from 'vue'
+import { useToggle } from '../../src'
 
 export default defineComponent({
   name: 'App',
@@ -20,8 +16,8 @@ export default defineComponent({
 
     return {
       toggleable,
-      toggle,
+      toggle
     }
-  },
+  }
 })
 </script>

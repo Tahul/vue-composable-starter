@@ -1,11 +1,9 @@
-import { ref } from 'vue-demi'
+import { ref } from 'vue'
 
 /**
  * A simple toggler.
- *
- * @param [defaultValue=false]
  */
-export const useToggle = (defaultValue: boolean = false) => {
+export const useToggle = (defaultValue = false) => {
   const toggleable = ref(defaultValue)
 
   const toggle = () => (toggleable.value = !toggleable.value)
