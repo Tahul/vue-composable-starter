@@ -1,6 +1,7 @@
 {
   "include": [
-    "src/global.d.ts",
+    "vite.config.ts",
+    "env.d.ts",
     "src/**/*.ts",
     "tests/**/*.ts",
     "demo/**/*.ts",
@@ -8,8 +9,16 @@
     "demo/**/*.tsx",
     "demo/**/*.vue"
   ],
-  "exclude": ["dist", "node_modules", "vue-demi"],
+  "exclude": ["dist", "node_modules"],
   "compilerOptions": {
+    "lib": ["esnext", "dom"],
+    "types": ["node", "vite/client"],
+    "plugins": [
+      {
+        "name": "@vuedx/typescript-plugin-vue"
+      }
+    ],
+
     "baseUrl": ".",
     "rootDir": ".",
     "outDir": "dist",
@@ -33,16 +42,6 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "removeComments": false,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["node", "jest", "vite/client"],
-    "plugins": [
-      {
-        "name": "@vuedx/typescript-plugin-vue"
-      }
-    ],
-    "paths": {
-      "@lib": ["./src"]
-    }
+    "jsx": "preserve"
   }
 }
