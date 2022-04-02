@@ -6,7 +6,7 @@ A minimalist starting point for your next Vue 3 composable.
 - 📦 **PNPM** as package manager
 - 🤹 Testing using [**Vitest**](https://vitest.dev)
 - ☑️ Linting using [**@antfu/eslint-config**](https://github.com/antfu/eslint-config)
-- 🌐 [**Nuxt 3**](https://nuxtjs.org) as a [**SSR Playground**]
+- 🌐 [**Nuxt 3**](https://nuxtjs.org) as a playground
 - 📸 Demo ready to be written and deployed using [**Vite**](https://vitejs.dev)
 - 🚚 Built using [**unbuild**](https://github.com/unjs/unbuild)
 
