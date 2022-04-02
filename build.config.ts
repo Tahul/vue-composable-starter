@@ -1,3 +1,5 @@
+import { copySync } from 'fs-extra'
+import consola from 'consola'
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
@@ -5,8 +7,9 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true
   },
-  externals: ['vue'],
+  externals: ['@nuxt/schema', '@nuxt/schema-edge', '@nuxt/kit', '@nuxt/kit-edge', 'nuxt', 'nuxt-edge', 'nuxt3', 'vue'],
   entries: [
+    // Plugin
     {
       input: 'src/index.ts',
       outDir: 'dist',
@@ -20,6 +23,29 @@ export default defineBuildConfig({
       name: 'index',
       format: 'cjs',
       ext: 'cjs'
+    },
+    // Nuxt
+    {
+      input: 'src/nuxt/module.ts',
+      outDir: 'dist',
+      name: 'nuxt',
+      format: 'esm',
+      ext: 'mjs'
+    },
+    {
+      input: 'src/nuxt/module.ts',
+      outDir: 'dist',
+      name: 'nuxt',
+      format: 'cjs',
+      ext: 'cjs'
     }
-  ]
+  ],
+  hooks: {
+    'build:done': () => {
+      copySync('src/nuxt/runtime', 'dist/runtime')
+
+      // eslint-disable-next-line no-console
+      consola.info('Nuxt runtime copied to `dist/`!')
+    }
+  }
 })
