@@ -5,8 +5,10 @@ A minimalist starting point for your next Vue 3 composable.
 - 🧩 **TypeScript** by default
 - 📦 **PNPM** as package manager
 - 🤹 Testing using [**Vitest**](https://vitest.dev)
-- 🚚 Exports **ESM** and **CJS** bundles
+- ☑️ Linting using [**@antfu/eslint-config**](https://github.com/antfu/eslint-config)
+- 🌐 [**Nuxt 3**](https://nuxtjs.org) as a [**SSR Playground**]
 - 📸 Demo ready to be written and deployed using [**Vite**](https://vitejs.dev)
+- 🚚 Built using [**unbuild**](https://github.com/unjs/unbuild)
 
 > Edit [variables](#to-do), implement, test, publish 🏎
 
@@ -52,6 +54,24 @@ Test typings:
 
 ```bash
 pnpm test:types
+```
+
+Start Nuxt 3 env:
+
+```bash
+pnpm dev:nuxt
+```
+
+Build Nuxt 3 env:
+
+```bash
+pnpm build:nuxt
+```
+
+Preview Nuxt 3 env:
+
+```bash
+pnpm start:nuxt
 ```
 
 ## To-Do
