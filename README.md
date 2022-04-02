@@ -74,6 +74,26 @@ Preview Nuxt 3 env:
 pnpm start:nuxt
 ```
 
+## Why
+
+This repository is useful if you want to start a new Vue composable, or a general Vue package.
+
+I used it personally for:
+
+- [**@vueuse/motion**](https://github.com/vueuse/motion)
+- [**@vueuse/gesture**](https://github.com/vueuse/gesture)
+- [**@vueuse/sound**](https://github.com/vueuse/sound)
+
+I try to keep it updated when I upgrade my own workflow!
+
+## Workflow
+
+I usually develop with the `dev:nuxt` command.
+
+Your changes on any file will be reloaded by **Nuxt**, and you can start trying SSR capabilities of your composable easily!
+
+The general Nuxt environment does not differ from a classic Vue app.
+
 ## To-Do
 
 - [ ] Edit package.json `name`, `description`, `repository` and `author` keys.
